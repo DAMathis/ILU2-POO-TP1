@@ -12,9 +12,37 @@ public class ScenarioCasDegrade {
 		try {
 			etal.libererEtal();
 		} catch (NullPointerException e) {	// RuntimeException
-			System.out.println("Exception catch: " + e);
+			System.out.println("Exception catch libererEtal: " + e);
 		}
-		etal.acheterProduit(0, null);
+		try {
+			etal.acheterProduit(0, null);
+		} catch (NullPointerException e) {
+			System.out.println("Exception catch acheterProduit3: " + e);
+		} catch (IllegalArgumentException e) {
+			System.out.println("Exception catch acheterProduit3: " + e);
+		} catch (IllegalStateException e) {
+			System.out.println("Exception catch acheterProduit3:" + e);
+		}
+		etal.occuperEtal(new Gaulois("Francis", 0), null, 0);
+		try {
+			etal.acheterProduit(7, null);
+		} catch (NullPointerException e) {
+			System.out.println("Exception catch acheterProduit1: " + e);
+		} catch (IllegalArgumentException e) {
+			System.out.println("Exception catch acheterProduit1: " + e);
+		} catch (IllegalStateException e) {
+			System.out.println("Exception catch acheterProduit1:" + e);
+		}
+		try {
+			etal.acheterProduit(0, new Gaulois("Asterix", 0));
+		} catch (NullPointerException e) {
+			System.out.println("Exception catch acheterProduit2: " + e);
+		} catch (IllegalArgumentException e) {
+			System.out.println("Exception catch acheterProduit2: " + e);
+		} catch (IllegalStateException e) {
+			System.out.println("Exception catch acheterProduit2:" + e);
+		}
+		etal.libererEtal();
 		System.out.println("Fin du test");
 	}
 }
